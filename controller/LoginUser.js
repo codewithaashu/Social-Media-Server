@@ -36,8 +36,7 @@ const LoginUser = async (req, res) => {
     const token = GenerateToken(userExist._id);
     return res
       .cookie("access_token", token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
+        SameSite: "Lax",
       })
       .status(200)
       .json({ message: "Login successfully.", success: true });
