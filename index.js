@@ -30,7 +30,7 @@ connectDB();
 app.use(express.json());
 
 //to accept data from frontend
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({ origin: process.env.APP_URL, credentials: true }));
 
 //register router
 app.use(router);
