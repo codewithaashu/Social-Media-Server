@@ -35,7 +35,7 @@ const LoginUser = async (req, res) => {
     //save token in cookie for authentication and send response to client side
     const token = GenerateToken(userExist._id);
     return res
-      .cookie("access_token", token)
+      .cookie("access_token", token, { domain: ".vercel.app" })
       .status(200)
       .json({ message: "Login successfully.", success: true });
   } catch (err) {
