@@ -38,6 +38,7 @@ const LoginUser = async (req, res) => {
       .cookie("access_token", token, {
         sameSite: "None",
         secure: true,
+        partitioned: true,
       })
       .status(200)
       .json({ message: "Login successfully.", success: true });
