@@ -30,7 +30,7 @@ connectDB();
 app.use(express.json());
 
 //to accept data from frontend
-app.use(cors({ origin: "https://funnbook.vercel.app", credentials: true }));
+app.use(cors({ origin: process.env.APP_URL, credentials: true }));
 
 //register router
 app.use(router);
