@@ -7,7 +7,7 @@ const GetUserDetails = async (req, res) => {
     //get the user
     const user = await Users.findById(userId)
       .select("-password")
-      .populate("friends", "firstName lastName profileUrl profession");
+      .populate("friends", "firstName lastName profileUrl profession location");
     //return back as a response
     return res
       .status(200)

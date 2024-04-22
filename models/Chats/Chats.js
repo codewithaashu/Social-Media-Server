@@ -11,6 +11,10 @@ const ChatSchema = new mongoose.Schema(
       type: Schema.Types.ObjectId,
       ref: "Messages",
     },
+    isBlock: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
