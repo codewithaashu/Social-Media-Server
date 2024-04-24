@@ -39,6 +39,7 @@ const LoginUser = async (req, res) => {
         httpOnly: false,
         sameSite: "None",
         secure: false,
+        partitioned: true,
       })
       .status(200)
       .json({ message: "Login successfully.", success: true });
