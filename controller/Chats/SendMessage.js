@@ -12,13 +12,18 @@ const SendMessage = async (req, res) => {
     let chatId = await Chats.findOne({
       members: { $all: [userId, recieverId] },
     });
-
     //if chatId doesn't exist, i.e. user send message first time then create a chat
     if (!chatId) {
       const chat = await Chats.create({
         members: [userId, recieverId],
       });
       chatId = chat._id;
+    }
+    //if chat is blocked by reciever then don't send message
+    if (chatId?.isBlock) {
+      return res
+        .status(404)
+        .json({ message: "User has been block", success: false });
     }
 
     //create message
