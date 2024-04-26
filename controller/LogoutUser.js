@@ -1,11 +1,5 @@
-import { LocalStorage } from "node-localstorage";
-const localStorage = new LocalStorage("./");
 const LogoutUser = async (req, res) => {
   try {
-    //in development mode
-    if (process.env.NODE_ENV === "production") {
-      localStorage.removeItem("access_token");
-    }
     return res
       .clearCookie("access_token")
       .status(200)

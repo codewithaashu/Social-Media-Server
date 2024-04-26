@@ -1,8 +1,7 @@
 import Users from "../models/Users.js";
 import CompareString from "../utils/CompareString.js";
 import GenerateToken from "../utils/GenerateToken.js";
-import { LocalStorage } from "node-localstorage";
-const localStorage = new LocalStorage("./");
+
 const LoginUser = async (req, res) => {
   try {
     //accept email and password from  request body
@@ -35,10 +34,6 @@ const LoginUser = async (req, res) => {
     //generate token using user's id and when we will decode the token it will return user's id
     //save token in cookie for authentication and send response to client side
     const token = GenerateToken(userExist._id);
-    //in development mode
-    if (process.env.NODE_ENV === "production") {
-      localStorage.setItem("access_token", token);
-    }
     return res
       .cookie("access_token", token)
       .status(200)
