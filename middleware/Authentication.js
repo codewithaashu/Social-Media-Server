@@ -1,9 +1,16 @@
 import jwt from "jsonwebtoken";
+import { LocalStorage } from "node-localstorage";
+const localStorage = new LocalStorage("./");
 const Authentication = (req, res, next) => {
   //to authenticate the user, check the token in cookie
 
   //check token in cookie
-  const token = req.cookies.access_token;
+  let token = req.cookies.access_token;
+
+  //in development mode
+  if (process.env.NODE_ENV === "production") {
+    token = localStorage.getItem("access_token");
+  }
   //if token doesn't  exist go to login page with error message "Please Login First"
   if (!token)
     return res.status(401).json({
