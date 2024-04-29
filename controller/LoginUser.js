@@ -36,11 +36,10 @@ const LoginUser = async (req, res) => {
     const token = GenerateToken(userExist._id);
     return res
       .cookie("access_token", token, {
-        httpOnly: false,
-        sameSite: "None",
+        expires: Date.now() + 24 * 60 * 60 * 1000,
         secure: true,
-        partitioned: true,
-        domain: ".vercel.app",
+        httpOnly: true,
+        sameSite: "None",
       })
       .status(200)
       .json({ message: "Login successfully.", success: true });

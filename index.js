@@ -30,7 +30,13 @@ connectDB();
 app.use(express.json());
 
 //to accept data from frontend
-app.use(cors({ origin: process.env.APP_URL, credentials: true }));
+app.use(
+  cors({
+    credentials: true,
+    origin: process.env.APP_URL,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
 
 //register router
 app.use(router);
