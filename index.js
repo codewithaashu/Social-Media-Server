@@ -37,7 +37,6 @@ app.use(
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
-
 //register router
 app.use(router);
 

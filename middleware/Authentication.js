@@ -1,9 +1,13 @@
 import jwt from "jsonwebtoken";
 const Authentication = (req, res, next) => {
   //to authenticate the user, check the token in cookie
-
+  // console.log(
+  //   req.headers.authorization.split(" ")[1],
+  //   req.headers.cookie.split("=")[1]
+  // );
   //check token in cookie
-  const token = req.cookies.access_token;
+  const token = req.headers.cookie.split("=")[1];
+  // console.log(token);
   //if token doesn't  exist go to login page with error message "Please Login First"
   if (!token)
     return res.status(401).json({
