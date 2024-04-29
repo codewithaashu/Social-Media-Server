@@ -36,7 +36,7 @@ const LoginUser = async (req, res) => {
     const token = GenerateToken(userExist._id);
     return res
       .cookie("access_token", token, {
-        expires: Date.now() + 24 * 60 * 60 * 1000,
+        expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
         secure: true,
         httpOnly: true,
         sameSite: "None",
