@@ -39,6 +39,9 @@ const LoginUser = async (req, res) => {
         httpOnly: false,
         sameSite: "None",
         secure: true,
+        partitioned: true,
+        domain: "funnbook.vercel.app",
+        host: "funnbook.vercel.app",
       })
       .status(200)
       .json({ message: "Login successfully.", success: true });
