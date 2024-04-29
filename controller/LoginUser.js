@@ -38,7 +38,7 @@ const LoginUser = async (req, res) => {
       .cookie("access_token", token, {
         expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
         secure: true,
-        httpOnly: true,
+        httpOnly: false,
         sameSite: "None",
       })
       .status(200)
