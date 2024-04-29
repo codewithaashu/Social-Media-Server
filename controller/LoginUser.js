@@ -39,6 +39,7 @@ const LoginUser = async (req, res) => {
         expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
         secure: true,
         httpOnly: false,
+        domain: ".onrender.com",
         sameSite: "None",
       })
       .status(200)
