@@ -38,10 +38,9 @@ const LoginUser = async (req, res) => {
       .cookie("access_token", token, {
         httpOnly: false,
         sameSite: "None",
-        secure: true,
+        secure: false,
         partitioned: true,
         domain: "funnbook.vercel.app",
-        host: "funnbook.vercel.app",
       })
       .status(200)
       .json({ message: "Login successfully.", success: true });
