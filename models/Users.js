@@ -53,11 +53,23 @@ const UserSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
-    twitterURL: {
+    facebookURL: {
       type: String,
       default: "",
     },
-    facebookURL: {
+    linkedinURL: {
+      type: String,
+      default: "",
+    },
+    gfgURL: {
+      type: String,
+      default: "",
+    },
+    leetcodeURL: {
+      type: String,
+      default: "",
+    },
+    githubURL: {
       type: String,
       default: "",
     },

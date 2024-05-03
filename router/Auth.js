@@ -12,6 +12,11 @@ import Authentication from "../middleware/Authentication.js";
 import UpdateUser from "../controller/UpdateUser.js";
 import GetProfileDetails from "../controller/GetProfileDetails.js";
 import SearchUserList from "../controller/SearchUserList.js";
+import {
+  gfgStats,
+  githubStats,
+  leetcodeStats,
+} from "../controller/fetchCodingProfile.js";
 
 //create an instance of AuthRouter
 const AuthRouter = express.Router();
@@ -30,6 +35,9 @@ AuthRouter.get("/forgot-password/:email", ForgotPassword);
 AuthRouter.put("/reset-password", ResetPassword);
 AuthRouter.get("/logout", LogoutUser);
 AuthRouter.get("/user", Authentication, GetUserDetails);
+AuthRouter.get("/user/gfg-stats/:username", Authentication, gfgStats);
+AuthRouter.get("/user/leetcode-stats/:username", Authentication, leetcodeStats);
+AuthRouter.get("/user/github-stats/:username", Authentication, githubStats);
 AuthRouter.get("/profile/:userId", Authentication, GetProfileDetails);
 AuthRouter.get("/search-user/:keyword", Authentication, SearchUserList);
 AuthRouter.put("/update-user", Authentication, UpdateUser);
